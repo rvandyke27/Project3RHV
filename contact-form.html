@@ -1,0 +1,89 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Project 3: Contact Form</title>
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+
+<script type="text/javascript">
+         
+         function validate(){
+            if( document.myForm.Name.value == "" )
+            {
+               alert( "Please provide your name!" );
+               document.myForm.Name.focus() ;
+               return false;
+            }
+
+             if( document.myForm.telephone.value == "" )
+            {
+               alert( "Please provide your phone number!" );
+               document.myForm.telephone.focus() ;
+               return false;
+            }
+            
+            if( document.myForm.EMail.value == "" )
+            {
+               alert( "Please provide your Email!" );
+               document.myForm.EMail.focus() ;
+               return false;
+            }
+
+            if(document.myForm.EMail.value != "")
+            {
+               var emailID = document.myForm.EMail.value;
+               atpos = emailID.indexOf("@");
+               dotpos = emailID.lastIndexOf(".");
+            
+               if (atpos < 1 || ( dotpos - atpos < 2 )) 
+               {
+                  alert("Please enter correct email ID")
+                  document.myForm.EMail.focus() ;
+                  return false;
+               }
+               return( true );
+            }
+      }
+      </script>
+
+</head>
+
+<body>
+
+<h1>Contact</h1>
+
+<form action="/cgi-bin/test.cgi" name="myForm" method="post" onsubmit="return(validate());">
+<div>
+  <label for="fname">First Name:</label>
+  <input type="text" id="fname" name="Name"/>
+</div>
+
+<div>
+  <label for="email">Email Address:</label>
+  <input type="text" id="email" name="EMail"/>
+</div>
+
+<div>
+  <label for="phone">Telephone:</label>
+  <input type="text" id="phone" name="telephone"/>
+</div>
+
+<div>
+  <textarea id="msg" name="message">Enter message here...</textarea>
+</div>
+
+<div class="button">
+  <button type="submit">Send</button>
+</div>
+
+</form>
+
+<br>
+<p>Or Go <a href=".">Back to the Index</a></p>
+
+</body>
+</html>
